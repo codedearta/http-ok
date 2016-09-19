@@ -1,0 +1,35 @@
+{
+  "name": "http-ok",
+  "version": "1.0.0",
+  "description": "A simple promise based http client which rejects the promise when the status is not 200 - OK",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -w '*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codedearta/http-ok.git"
+  },
+  "keywords": [
+    "http",
+    "promise",
+    "reject",
+    "status",
+    "ok",
+    "200",
+    "error"
+  ],
+  "author": "Sepp Renfer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codedearta/http-ok/issues"
+  },
+  "homepage": "https://github.com/codedearta/http-ok#readme",
+  "devDependencies": {
+    "mocha": "^3.0.2"
+  },
+  "dependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0"
+  }
+}
