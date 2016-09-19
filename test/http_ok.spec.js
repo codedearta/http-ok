@@ -3,39 +3,45 @@ const http = require('http');
 const HttpOk = require('../src/http_ok.js');
 
 describe('http-ok.', function() {
-	// let httpServer
-	//
-	// before(() => {
-	// 	httpServer = http.createServer((request, response) => {
-	// 		response.write('blah');
-	// 		response.end();
-	// 	}).listen(12344);
-	// });
+  let client;
+
+  beforeEach(() => {
+    client = new HttpOk();
+  });
 
   it('get() should return a promise and resolved when statusCode is 200', function(done) {
-		let client = new HttpOk('http://www.nzz.ch');
-		client.get().then(
+		client.get('http://www.nzz.ch').then(
 			(response) => { assert.equal(response.statusCode, 200); done()},
 			(err) => done(err)
 		);
   });
 
 	it('get() should return a rejected promise when hostname could not been resolved', function(done) {
-		let client = new HttpOk('http://www.nzz.chsdf');
-		client.get().catch(err => {
+		client.get('http://www.nzz.chsdf').catch(err => {
 			assert.equal(err.code, 'ENOTFOUND');
 			done();
 		});
 	});
 
 	it('get() should return a rejected promise containing the response as the error when statusCode is not 200', function(done) {
-		let client = new HttpOk('http://www.nzz.ch/erter');
-		client.get().catch(err => {
+		client.get('http://www.nzz.ch/erter').catch(err => {
 			assert.equal(err.statusCode, 301);
 			assert.equal(err.statusMessage, 'Moved Permanently');
 			done();
 		});
 	});
+
+
+  it('get() should return a promise and resolved when statusCode is as expected equals 301', function(done) {
+    client.get('http://www.nzz.ch/erter', 301).then(
+      (response) => { assert.equal(response.statusCode, 301); done()},
+      (err) => done(err)
+    );
+  });
+
+  after(() => {
+
+  })
 
 	//after('close mock server', () => httpServer.close());
 });
