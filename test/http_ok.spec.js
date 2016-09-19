@@ -1,6 +1,6 @@
 const assert = require('assert');
 const http = require('http');
-const HttpOk = require('./index.js');
+const HttpOk = require('../src/http_ok.js');
 
 describe('http-ok.', function() {
 	// let httpServer

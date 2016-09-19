@@ -2,9 +2,9 @@
   "name": "http-ok",
   "version": "1.0.0",
   "description": "A simple promise based http client which rejects the promise when the status is not 200 - OK",
-  "main": "index.js",
+  "main": "src/http_ok.js",
   "scripts": {
-    "test": "mocha -w '*.js'"
+    "test": "mocha -w 'test/*.js'"
   },
   "repository": {
     "type": "git",
