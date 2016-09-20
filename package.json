@@ -1,10 +1,12 @@
 {
   "name": "http-ok",
   "version": "1.0.0",
-  "description": "A simple promise based http client which rejects the promise when the status is not 200 - OK",
+  "description": "A simple promise based http client which rejects the promise when the status ode is not 200 - OK",
   "main": "src/http_ok.js",
   "scripts": {
-    "test": "mocha -w 'test/*.js'"
+    "test": "mocha -w 'test/*.js'",
+    "report": "istanbul cover _mocha -- -R spec test/*.js",
+    "coverage": "istanbul cover _mocha --report lcovonly -- -R spec test/*.js && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -12,6 +14,7 @@
   },
   "keywords": [
     "http",
+    "fetch",
     "promise",
     "reject",
     "status",
