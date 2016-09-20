@@ -8,7 +8,7 @@ http-ok
 A simple promise based http client which rejects the promise when the status is not 200 - OK
 
 
-# Motivation
+## Motivation
 
 Instead of having if-statements to check the http status code when a request returns, http-ok rejects the promise when the status code is not as expected (by default 200).
 
@@ -43,3 +43,13 @@ client.get('www.google.com')
 });
 
 ```
+# Features
+
+- More natural promise chain by rejecting the promis when response code is not OK
+- Stay consistent with `node http` API. Uses the same request options object.
+- Use native promise.
+
+
+# Difference from node-fetch
+
+- See [Link to Header](#motivationr) for details.
