@@ -104,19 +104,17 @@ client.post(requestOptions, postData, 200)
 
 ```
 
-See [test cases](https://github.com/codedearta/http-ok/test) for more examples.
-
+See [test cases](https://github.com/codedearta/http-ok/tree/master/test) for more examples.
 
 # API
 
-## get(url) // default 200
-## get(url, expectedStatusCode)
-## get(options, expectedStatusCode)
+- get(url) // default 200
+- get(url, expectedStatusCode)
+- get(options, expectedStatusCode)
 
-## post(url, postData) // default 200
-## post(url, postData, expectedStatusCode)
-## post(options, postData, expectedStatusCode)
-
+- post(url, postData) // default 200
+- post(url, postData, expectedStatusCode)
+- post(options, postData, expectedStatusCode)
 
 Returns a `Promise`
 
@@ -131,4 +129,3 @@ same as node.js http.request options.
 # License
 
 MIT
-
