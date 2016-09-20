@@ -34,7 +34,7 @@ client.get('www.google.com')
   .then(response => {
     /// process here the response
   })
-  .catch(error) {
+  .catch(error => {
     /// error handling here
   }
 });
