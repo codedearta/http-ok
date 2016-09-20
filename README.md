@@ -10,7 +10,7 @@ A simple promise based http client which rejects the promise when the status is 
 
 # Motivation
 
-Instead of having a of if-statements to check the http status code when a request returns, http-ok rejects the promise when the status code is not as expected (by default 200).
+Instead of having if-statements to check the http status code when a request returns, http-ok rejects the promise when the status code is not as expected (by default 200).
 
 example code when using a http-client like node fetch:
 ```javascript
