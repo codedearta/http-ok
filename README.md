@@ -52,4 +52,4 @@ client.get('www.google.com')
 
 # Difference from node-fetch
 
-- See [Link to Header](#motivationr) for details.
+- See [Link to Header](#motivation) for details.
