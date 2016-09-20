@@ -17,9 +17,7 @@ describe('http-ok test suite', function() {
     server.listen(serverPort);
   });
 
-  beforeEach('create a new HttpOk client',() => {
-    client = new HttpOk();
-  });
+  before('create a new HttpOk client',() => { client = new HttpOk(); });
 
   it('get() should return a promise and resolved when statusCode is 200', function(done) {
 		client.get('http://www.nzz.ch')
