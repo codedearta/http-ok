@@ -7,7 +7,6 @@ http-ok
 
 A simple promise based http client which rejects the promise when the status is not 200 - OK
 
-
 ## Motivation
 
 Instead of having if-statements to check the http status code when a request returns, http-ok rejects the promise when the status code is not as expected (by default 200). This should make the promise chain look much simpler and more focused on the succes flow.
