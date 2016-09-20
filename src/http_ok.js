@@ -9,13 +9,13 @@ class HttpOk {
   get(requestOptions, expectedStatusCode = 200) {
 		const ro = this.parseRequestOptions(requestOptions);
 		ro.method = 'GET';
-		return this.request(ro, expectedStatusCode);
+		return this.request(ro, undefined, expectedStatusCode);
 	}
 
-	post(requestOptions, expectedStatusCode = 200) {
+	post(requestOptions, postData, expectedStatusCode = 200) {
 		const ro = this.parseRequestOptions(requestOptions);
 		ro.method = 'POST';
-		return this.request(ro, expectedStatusCode);
+		return this.request(ro, postData, expectedStatusCode);
 	}
 
 	parseRequestOptions(requestOptions) {
@@ -31,7 +31,7 @@ class HttpOk {
 		};
 	}
 
-	request(requestOptions, expectedStatusCode = 200) {
+	request(requestOptions, postData, expectedStatusCode = 200) {
 		return new Promise((resolve, reject) => {
 			const request = http.request(requestOptions, (response) => {
 					if(response.statusCode === expectedStatusCode) {
@@ -44,6 +44,9 @@ class HttpOk {
 				request.on('error', error => {
 					reject(error);
 				});
+				if(postData) {
+					request.write(postData);
+				}
 				request.end();
 		});
 	}

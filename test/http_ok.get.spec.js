@@ -2,7 +2,9 @@ const assert = require('assert');
 const http = require('http');
 const HttpOk = require('../src/http_ok.js');
 
-describe('http-ok test suite', function() {
+
+
+describe('http-ok.get()', () => {
     let client, server, serverPort = 12345, requestOptions, nextResult;
 
     before('create a test server', () => {
@@ -19,25 +21,24 @@ describe('http-ok test suite', function() {
     beforeEach('given: initialize nextResult and requestOptions', () => {
         nextResult = { body : 'hello', statusCode : 200 };
         requestOptions = { hostname: 'localhost', port: serverPort, path: '' };
-        client = new HttpOk();
     });
 
     beforeEach('given: create a new HttpOk client', () => {
         client = new HttpOk();
     });
 
-    it('get() should return a promise and resolved when statusCode is 200', function() {
+    it('should return a RESOLVED promise when statusCode is 200', () => {
       const response = client.get(requestOptions); // when
       return response.then(response => assert.equal(response.statusCode, 200)); // then
     });
 
-    it('get() should return a rejected promise containing the response as the error when statusCode is not 200', function() {
+    it('should return a RESOLVED promise when statusCode is as expected 301', () => {
       nextResult.statusCode = 301; // given
       const response = client.get(requestOptions); // when
       return response.catch(err => assert.equal(err.statusCode, 301)); // then
     });
 
-    it('get() should return a resolved promise when statusCode is as expected equals 301', function() {
+    it('should return a REJECTED promise when statusCode is not 200', () => {
       // given
       nextResult.body = 'Moved Permanently'
       nextResult.statusCode = 301;
@@ -46,7 +47,7 @@ describe('http-ok test suite', function() {
       return response.then(response => assert.equal(response.statusCode, 301)); //then
     });
 
-    it('get() should return a rejected promise when statusCode is not as expected equals 301', function() {
+    it('should return a REJECTED promise when statusCode is not as expected 301', () => {
       // given
       nextResult.body = 'Moved Permanently'
       nextResult.statusCode = 301;
@@ -55,12 +56,12 @@ describe('http-ok test suite', function() {
       return response.catch(err => assert.equal(err.statusCode, 301)); // then
     });
 
-    it('get() -> response should have a function text() returning a promise to read the body text', function() {
+    it('should return a REJECTED promise when hostname could not been resolved', () => {
       const response = client.get(requestOptions, 200); // when
-      return response.then(response => response.text().then(te => assert.equal(te, 'hello'))); // then
+      return response.then(response => response.text().then(te => assert.equal(te, nextResult.body))); // then
     });
 
-    it('get() should return a rejected promise when hostname could not been resolved', function() {
+    it('body text can be read from response', () => {
       requestOptions.hostname = 'www.blah.chxd' // given
       const response = client.get(requestOptions); // when
       return response.catch(err => assert.equal(err.code, 'ENOTFOUND')); // then
