@@ -128,7 +128,7 @@ same as node.js http.request options.
 
 ### expectedStatusCode
 
-and integer e.g. 200 or 301
+and integer eg `200` or `301`
 
 ### postData
 
