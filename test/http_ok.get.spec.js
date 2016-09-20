@@ -26,6 +26,11 @@ describe('http-ok.get()', () => {
         client = new HttpOk();
     });
 
+    it('should return a RESOLVED promise when statusCode is 200 with url:nzz.ch', () => {
+      const response = client.get('http://www.nzz.ch'); // when
+      return response.then(response => assert.equal(response.statusCode, 200)); // then
+    });
+
     it('should return a RESOLVED promise when statusCode is 200', () => {
       const response = client.get(requestOptions); // when
       return response.then(response => assert.equal(response.statusCode, 200)); // then
