@@ -2,10 +2,9 @@ const assert = require('assert');
 const http = require('http');
 const HttpOk = require('../src/http_ok.js');
 
-
-
 describe('http-ok.get()', () => {
     let client, server, serverPort = 12345, requestOptions, nextResult;
+
 
     before('create a test server', () => {
         server = http.createServer((req, res) => {
@@ -56,12 +55,20 @@ describe('http-ok.get()', () => {
       return response.catch(err => assert.equal(err.statusCode, 301)); // then
     });
 
-    it('should return a REJECTED promise when hostname could not been resolved', () => {
+    it('body text can be read from response', () => {
       const response = client.get(requestOptions, 200); // when
       return response.then(response => response.text().then(te => assert.equal(te, nextResult.body))); // then
     });
 
-    it('body text can be read from response', () => {
+    it('error handling in promis chain works as expected', () => {
+      const response = client.get(requestOptions, 201); // when
+      return response
+        .then(res => res.text())
+        .then(te => console.log(te, nextResult.body))
+        .catch(err => assert.equal(err.statusCode, 200)); // then
+    });
+
+    it('should return a REJECTED promise when hostname could not been resolved', () => {
       requestOptions.hostname = 'www.blah.chxd' // given
       const response = client.get(requestOptions); // when
       return response.catch(err => assert.equal(err.code, 'ENOTFOUND')); // then
