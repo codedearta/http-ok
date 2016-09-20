@@ -53,3 +53,82 @@ fetch('www.google.com')
 # Difference from node-fetch
 
 - See [Link to Header](#motivation) for details.
+
+# Install
+
+`npm install http-ok --save`
+
+
+# Usage
+
+```javascript
+const HttpOk = require('http-ok');
+const client = new HttpOk();
+
+// plain text or html
+
+client.get('https://github.com/')
+	.then(function(res) {
+		return res.text();
+	}).then(function(body) {
+		console.log(body);
+	});
+
+// json
+
+client.get('https://api.github.com/users/github')
+	.then(function(res) {
+		return res.json();
+	}).then(function(json) {
+		console.log(json);
+	});
+
+// post with form data and custom headers
+const formData = {};
+formData.name = 'Bob Mc Bobson';
+formData.place = 'Cheddar';
+const postData = querystring.stringify(formData);
+
+const requestOptions = {};
+requestOptions.hostname = 'http://httpbin.org';
+requestOptions.headers = {}
+requestOptions.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+requestOptions.headers['Content-Length'] = Buffer.byteLength(postData);
+        
+client.post(requestOptions, postData, 200)
+	.then(function(res) {
+		// process here the response
+	}).catch(json => {
+		// error handling here
+	});
+
+```
+
+See [test cases](https://github.com/codedearta/http-ok/test) for more examples.
+
+
+# API
+
+## get(url) // default 200
+## get(url, expectedStatusCode)
+## get(options, expectedStatusCode)
+
+## post(url, postData) // default 200
+## post(url, postData, expectedStatusCode)
+## post(options, postData, expectedStatusCode)
+
+
+Returns a `Promise`
+
+### Url
+
+Should be an absolute url, eg `http://example.com`
+
+### Options
+
+same as node.js http.request options.
+
+# License
+
+MIT
+
