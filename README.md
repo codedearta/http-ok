@@ -14,8 +14,8 @@ Instead of having if-statements to check the http status code when a request ret
 
 example code when using a http-client like node fetch:
 ```javascript
-
-client.fetch('www.google.com')
+const fetch = require("node-fetch");
+fetch('www.google.com')
   .then(response => {
       if(response.statusCode === 200) {
         /// process here the response
@@ -29,7 +29,8 @@ client.fetch('www.google.com')
 
 example code when using http-ok:
 ```javascript
-
+const HttpOk = require("http-ok")
+const client = new HttpOk(); 
 client.get('www.google.com')
   .then(response => {
     /// process here the response
