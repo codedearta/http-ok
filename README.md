@@ -5,8 +5,6 @@ http-ok
 [![build status][travis-image]][travis-url]
 [![coverage status][coveralls-image]][coveralls-url]
 
-[![Coverage Status](https://coveralls.io/repos/github/codedearta/http-ok/badge.svg?branch=master)](https://coveralls.io/github/codedearta/http-ok?branch=master)
-
 A simple promise based http client which rejects the promise when the status is not 200 - OK
 
 
@@ -140,10 +138,7 @@ MIT
 
 [npm-image]: https://img.shields.io/npm/v/http-ok.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/http-ok
-[travis-image]: https://img.shields.io/travis/bitinn/http-ok.svg?style=flat-square
+[travis-image]: https://travis-ci.org/codedearta/http-ok.svg?branch=master
 [travis-url]: https://travis-ci.org/bitinn/http-ok
 [coveralls-image]: https://coveralls.io/repos/github/codedearta/http-ok/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/bitinn/http-ok
-
-
-
