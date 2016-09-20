@@ -142,3 +142,6 @@ MIT
 [travis-url]: https://travis-ci.org/bitinn/http-ok
 [coveralls-image]: https://img.shields.io/coveralls/bitinn/http-ok.svg?style=flat-square
 [coveralls-url]: https://coveralls.io/r/bitinn/http-ok
+
+
+[![Coverage Status](https://coveralls.io/repos/github/codedearta/http-ok/badge.svg?branch=master)](https://coveralls.io/github/codedearta/http-ok?branch=master)
