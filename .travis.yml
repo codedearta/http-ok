@@ -4,4 +4,4 @@ node_js:
   - "6.5.0"
   - "node"
 before_install: npm install -g npm
-script: npm run coverage
+script: npm run report
