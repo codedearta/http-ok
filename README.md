@@ -118,13 +118,21 @@ See [test cases](https://github.com/codedearta/http-ok/tree/master/test) for mor
 
 Returns a `Promise`
 
-### Url
+### url
 
 Should be an absolute url, eg `http://example.com`
 
-### Options
+### options
 
 same as node.js http.request options.
+
+### expectedStatusCode
+
+and integer e.g. 200 or 301
+
+### postData
+
+url encoded string
 
 # License
 
