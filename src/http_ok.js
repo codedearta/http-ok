@@ -7,15 +7,15 @@ class HttpOk {
   }
 
   get(requestOptions, expectedStatusCode = 200) {
-		const ro = this.parseRequestOptions(requestOptions);
-		ro.method = 'GET';
-		return this.request(ro, undefined, expectedStatusCode);
+		const requestOptionsObject = this.parseRequestOptions(requestOptions);
+		requestOptionsObject.method = 'GET';
+		return this.request(requestOptionsObject, undefined, expectedStatusCode);
 	}
 
 	post(requestOptions, postData, expectedStatusCode = 200) {
-		const ro = this.parseRequestOptions(requestOptions);
-		ro.method = 'POST';
-		return this.request(ro, postData, expectedStatusCode);
+		const requestOptionsObject = this.parseRequestOptions(requestOptions);
+		requestOptionsObject.method = 'POST';
+		return this.request(requestOptionsObject, postData, expectedStatusCode);
 	}
 
 	parseRequestOptions(requestOptions) {
@@ -32,8 +32,10 @@ class HttpOk {
 	}
 
 	request(requestOptions, postData, expectedStatusCode = 200) {
+		const requestOptionsObject = this.parseRequestOptions(requestOptions);
+
 		return new Promise((resolve, reject) => {
-			const request = http.request(requestOptions, (response) => {
+			const request = http.request(requestOptionsObject, (response) => {
 					if(response.statusCode === expectedStatusCode) {
 						response.text = () => this.bodyText(response);
 						resolve(response);
