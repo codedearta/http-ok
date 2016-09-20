@@ -5,7 +5,8 @@
   "main": "src/http_ok.js",
   "scripts": {
     "test": "mocha -w 'test/*.js'",
-    "report": "istanbul cover _mocha -- -R spec test/*.js"  
+    "report": "istanbul cover _mocha -- -R spec test/*.js",
+    "coverage": "istanbul cover _mocha --report lcovonly -- -R spec test/*.js && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/codedearta/http-ok#readme",
   "devDependencies": {
+    "coveralls": "^2.11.14",
     "istanbul": "^0.4.5",
     "mocha": "^3.0.2"
   }
