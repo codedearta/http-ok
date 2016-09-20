@@ -68,10 +68,8 @@ const client = new HttpOk();
 // plain text or html
 
 client.get('https://github.com/')
-	.then(function(res) {
-		return res.text();
-	}).then(function(body) {
-		console.log(body);
+	.then(res => res.text())
+	.then(text => console.log(body);
 	});
 
 // json
@@ -137,3 +135,10 @@ url encoded string
 # License
 
 MIT
+
+[npm-image]: https://img.shields.io/npm/v/node-fetch.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/http-ok
+[travis-image]: https://img.shields.io/travis/bitinn/http-ok.svg?style=flat-square
+[travis-url]: https://travis-ci.org/bitinn/http-ok
+[coveralls-image]: https://img.shields.io/coveralls/bitinn/http-ok.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/bitinn/http-ok
