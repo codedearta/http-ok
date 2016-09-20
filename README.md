@@ -136,7 +136,7 @@ url encoded string
 
 MIT
 
-[npm-image]: https://img.shields.io/npm/v/http-ok.svg?style=flat-square
+[npm-image]: https://badge.fury.io/js/http-ok.svg
 [npm-url]: https://www.npmjs.com/package/http-ok
 [travis-image]: https://travis-ci.org/codedearta/http-ok.svg?branch=master
 [travis-url]: https://travis-ci.org/codedearta/http-ok
