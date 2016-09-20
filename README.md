@@ -7,7 +7,6 @@ http-ok
 
 A simple promise based http client which rejects the promise when the status is not 200 - OK
 
-
 ## Motivation
 
 Instead of having if-statements to check the http status code when a request returns, http-ok rejects the promise when the status code is not as expected (by default 200). This should make the promise chain look much simpler and more focused on the succes flow.
@@ -136,9 +135,9 @@ url encoded string
 
 MIT
 
-[npm-image]: https://img.shields.io/npm/v/http-ok.svg?style=flat-square
+[npm-image]: https://badge.fury.io/js/http-ok.svg
 [npm-url]: https://www.npmjs.com/package/http-ok
-[travis-image]: https://img.shields.io/travis/bitinn/http-ok.svg?style=flat-square
-[travis-url]: https://travis-ci.org/bitinn/http-ok
-[coveralls-image]: https://img.shields.io/coveralls/bitinn/http-ok.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/bitinn/http-ok
+[travis-image]: https://travis-ci.org/codedearta/http-ok.svg?branch=master
+[travis-url]: https://travis-ci.org/codedearta/http-ok
+[coveralls-image]: https://coveralls.io/repos/github/codedearta/http-ok/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/codedearta/http-ok
