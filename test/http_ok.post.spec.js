@@ -1,9 +1,7 @@
 const assert = require('assert');
 const http = require('http');
 const querystring = require('querystring');
-const HttpOk = require('../src/http_ok.js');
-
-
+const HttpOk = require('../dist/http_ok.js');
 
 describe('http-ok.post()', () => {
     let client, server, serverPort = 12345, requestOptions = {}, nextResult = {}, postData;

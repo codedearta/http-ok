@@ -1,24 +1,27 @@
+// @flow
+
 const http = require('http');
 const url = require('url');
 
 class HttpOk {
-	constructor(agent = false) {
+  agent: boolean;
+
+	constructor(agent:boolean = false) {
     this.agent = agent;
   }
 
-  get(requestOptions, expectedStatusCode = 200) {
+  get(requestOptions: Object, expectedStatusCode: number = 200) {
 		const requestOptionsObject = this.parseRequestOptions(requestOptions);
-		requestOptionsObject.method = 'GET';
 		return this.request(requestOptionsObject, undefined, expectedStatusCode);
 	}
 
-	post(requestOptions, postData, expectedStatusCode = 200) {
+	post(requestOptions: Object, postData: string, expectedStatusCode:number = 200) {
 		const requestOptionsObject = this.parseRequestOptions(requestOptions);
 		requestOptionsObject.method = 'POST';
 		return this.request(requestOptionsObject, postData, expectedStatusCode);
 	}
 
-	parseRequestOptions(requestOptions) {
+	parseRequestOptions(requestOptions: Object) {
 		if(typeof requestOptions !== 'string') {
 			return requestOptions;
 		}
@@ -28,17 +31,19 @@ class HttpOk {
 			hostname: urlObj.hostname,
 			port: urlObj.port ? urlObj.port : 80,
 			path: urlObj.pathname,
+			method: 'GET'
 		};
 	}
 
-	request(requestOptions, postData, expectedStatusCode = 200) {
+	request(requestOptions:Object, postData:string = '', expectedStatusCode:number = 200) {
 		const requestOptionsObject = this.parseRequestOptions(requestOptions);
 
 		return new Promise((resolve, reject) => {
 			const request = http.request(requestOptionsObject, (response) => {
 					if(response.statusCode === expectedStatusCode) {
-						response.text = () => this.bodyText(response);
-						resolve(response);
+						const okResponse = Object.assign({ text:undefined }, response);
+						okResponse.text = () => this.bodyText(response);
+						resolve(okResponse);
 					} else {
 						reject(response);
 					}
@@ -53,7 +58,7 @@ class HttpOk {
 		});
 	}
 
-	bodyText(response) {
+	bodyText(response:Object) {
 		return new Promise((resolve, reject) => {
 			 response.setEncoding('utf8');
 			 let body = '';

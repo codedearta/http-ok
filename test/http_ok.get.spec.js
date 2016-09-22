@@ -1,10 +1,9 @@
 const assert = require('assert');
 const http = require('http');
-const HttpOk = require('../src/http_ok.js');
+const HttpOk = require('../dist/http_ok.js');
 
 describe('http-ok.get()', () => {
     let client, server, serverPort = 12345, requestOptions, nextResult;
-
 
     before('create a test server', () => {
         server = http.createServer((req, res) => {
