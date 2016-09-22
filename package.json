@@ -2,7 +2,7 @@
   "name": "http-ok",
   "version": "1.0.0",
   "description": "A simple promise based http client which rejects the promise when the status ode is not 200 - OK",
-  "main": "src/http_ok.js",
+  "main": "dist/http_ok.js",
   "scripts": {
     "watch": "parallelshell 'npm run flow' 'npm run build-watch' 'npm run test-watch'",
     "flow": "chokidar src/*.js -c flow",
