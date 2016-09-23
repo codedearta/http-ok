@@ -64,20 +64,14 @@ const HttpOk = require('http-ok');
 const client = new HttpOk();
 
 // plain text or html
-
 client.get('https://github.com/')
 	.then(res => res.text())
-	.then(text => console.log(body);
-	});
+	.then(text => console.log(body));
 
 // json
-
 client.get('https://api.github.com/users/github')
-	.then(res => {
-		return res.json();
-	}).then(json => {
-		console.log(json);
-	});
+	.then(res => res.json())
+	.then(json => console.log(json));
 
 // post with form data and custom headers
 const querystring = require('querystring');
