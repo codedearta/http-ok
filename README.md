@@ -73,9 +73,9 @@ client.get('https://github.com/')
 // json
 
 client.get('https://api.github.com/users/github')
-	.then(function(res) {
+	.then(res => {
 		return res.json();
-	}).then(function(json) {
+	}).then(json => {
 		console.log(json);
 	});
 
@@ -96,11 +96,19 @@ const requestOptions = {
 };
 
 client.post(requestOptions, postData, 200)
-	.then(function(res) {
+	.then(res => {
 		// process here the response
 	}).catch(json => {
 		// error handling here
 	});
+	
+// specific success case eg. 302
+client.get('http://redirected.com', 302)
+     .then(response => {
+         // process here the response
+     }).catch(error => {
+         // error handling here
+     });
 ```
 
 See [test cases](https://github.com/codedearta/http-ok/tree/master/test) for more examples.
