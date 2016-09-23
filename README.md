@@ -3,7 +3,7 @@ http-ok
 
 [![npm version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
-[![coverage status][coveralls-image]][coveralls-url]
+[coverage status][coveralls-url]
 
 A simple promise based http client which rejects the promise when the status is not 200 - OK
 
@@ -11,7 +11,7 @@ A simple promise based http client which rejects the promise when the status is 
 
 Instead of having if-statements to check the http status code when a request returns, http-ok rejects the promise when the status code is not as expected (by default 200). This should make the promise chain look much simpler and more focused on the succes flow.
 
-Example code using 'http-ok':
+#### Example using 'http-ok':
 ```javascript
 const HttpOk = require("http-ok")
 const client = new HttpOk(); 
@@ -26,7 +26,7 @@ client.get('www.google.com')
 });
 ```
 
-Example code using a http-client like 'node-fetch':
+#### Example using a http-client like 'node-fetch':
 ```javascript
 const fetch = require("node-fetch");
 
@@ -38,13 +38,15 @@ fetch('www.google.com')
         // error handling here
       }
     }
-  );
+  ).catch(err => {
+  	// error handling here
+  });
 
 ```
 
 # Features
 
-- More natural promise chain by rejecting the promis when response code is not OK
+- More natural promise chain by rejecting the promise when the response code is not OK
 - Stay consistent with `node http` API. Uses the same request options object.
 - Use native promise.
 
@@ -57,48 +59,60 @@ fetch('www.google.com')
 
 `npm install http-ok --save`
 
-
 # Usage
 
+#### plain text or html
 ```javascript
 const HttpOk = require('http-ok');
 const client = new HttpOk();
 
-// plain text or html
-
 client.get('https://github.com/')
 	.then(res => res.text())
-	.then(text => console.log(body);
-	});
+	.then(text => console.log(body))
+	.catch(err => console.log(err));
+```
 
-// json
-
+#### json response
+```javascript
 client.get('https://api.github.com/users/github')
-	.then(function(res) {
-		return res.json();
-	}).then(function(json) {
-		console.log(json);
-	});
+	.then(res => res.json())
+	.then(json => console.log(json))
+	.catch(err => console.log(err));
+```
 
-// post with form data and custom headers
-const formData = {};
-formData.name = 'Bob Mc Bobson';
-formData.place = 'Cheddar';
+#### post with form data and custom headers
+```javascript
+const querystring = require('querystring');
+const formData = { 
+    name: 'Bob Mc Bobson', 
+    place: 'Cheddar' 
+};
 const postData = querystring.stringify(formData);
 
-const requestOptions = {};
-requestOptions.hostname = 'http://httpbin.org';
-requestOptions.headers = {}
-requestOptions.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-requestOptions.headers['Content-Length'] = Buffer.byteLength(postData);
-        
+const requestOptions = {
+    hostname: 'http://httpbin.org',
+    headers: {
+         'Content-Type': 'application/x-www-form-urlencoded',
+         'Content-Length': Buffer.byteLength(postData)
+    }
+};
+
 client.post(requestOptions, postData, 200)
-	.then(function(res) {
+	.then(res => {
 		// process here the response
 	}).catch(json => {
 		// error handling here
 	});
+```
 
+#### specific success case eg. 302
+```javascript
+client.get('http://redirected.com', 302)
+     .then(response => {
+         // process here the response
+     }).catch(error => {
+         // error handling here
+     });
 ```
 
 See [test cases](https://github.com/codedearta/http-ok/tree/master/test) for more examples.
