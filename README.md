@@ -4,6 +4,7 @@ http-ok
 [![npm version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![coverage status][coveralls-image]][coveralls-url]
+[![Coverage Status](https://coveralls.io/repos/github/codedearta/http-ok/badge.svg?branch=master)](https://coveralls.io/github/codedearta/http-ok?branch=master)
 
 A simple promise based http client which rejects the promise when the status is not 200 - OK
 
