@@ -11,7 +11,7 @@ A simple promise based http client which rejects the promise when the status is 
 
 Instead of having if-statements to check the http status code when a request returns, http-ok rejects the promise when the status code is not as expected (by default 200). This should make the promise chain look much simpler and more focused on the succes flow.
 
-Example code using 'http-ok':
+#### Example using 'http-ok':
 ```javascript
 const HttpOk = require("http-ok")
 const client = new HttpOk(); 
@@ -26,7 +26,7 @@ client.get('www.google.com')
 });
 ```
 
-Example code using a http-client like 'node-fetch':
+#### Example using a http-client like 'node-fetch':
 ```javascript
 const fetch = require("node-fetch");
 
