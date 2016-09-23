@@ -61,7 +61,7 @@ fetch('www.google.com')
 
 # Usage
 
-### plain text or html
+#### plain text or html
 ```javascript
 const HttpOk = require('http-ok');
 const client = new HttpOk();
