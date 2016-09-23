@@ -61,11 +61,11 @@ fetch('www.google.com')
 
 # Usage
 
+### plain text or html
 ```javascript
 const HttpOk = require('http-ok');
 const client = new HttpOk();
 
-// plain text or html
 client.get('https://github.com/')
 	.then(res => res.text())
 	.then(text => console.log(body));
