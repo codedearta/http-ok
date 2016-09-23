@@ -69,12 +69,14 @@ const client = new HttpOk();
 client.get('https://github.com/')
 	.then(res => res.text())
 	.then(text => console.log(body));
-
+```
+```javascript
 // json
 client.get('https://api.github.com/users/github')
 	.then(res => res.json())
 	.then(json => console.log(json));
-
+```
+```javascript
 // post with form data and custom headers
 const querystring = require('querystring');
 const formData = { 
@@ -97,7 +99,8 @@ client.post(requestOptions, postData, 200)
 	}).catch(json => {
 		// error handling here
 	});
-	
+```
+```javascript
 // specific success case eg. 302
 client.get('http://redirected.com', 302)
      .then(response => {
