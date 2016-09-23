@@ -44,7 +44,7 @@ fetch('www.google.com')
 
 # Features
 
-- More natural promise chain by rejecting the promis when response code is not OK
+- More natural promise chain by rejecting the promise when the response code is not OK
 - Stay consistent with `node http` API. Uses the same request options object.
 - Use native promise.
 
@@ -56,7 +56,6 @@ fetch('www.google.com')
 # Install
 
 `npm install http-ok --save`
-
 
 # Usage
 
@@ -81,24 +80,27 @@ client.get('https://api.github.com/users/github')
 	});
 
 // post with form data and custom headers
-const formData = {};
-formData.name = 'Bob Mc Bobson';
-formData.place = 'Cheddar';
+const querystring = require('querystring');
+const formData = { 
+    name: 'Bob Mc Bobson', 
+    place: 'Cheddar' 
+};
 const postData = querystring.stringify(formData);
 
-const requestOptions = {};
-requestOptions.hostname = 'http://httpbin.org';
-requestOptions.headers = {}
-requestOptions.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-requestOptions.headers['Content-Length'] = Buffer.byteLength(postData);
-        
+const requestOptions = {
+    hostname: 'http://httpbin.org',
+    headers: {
+         'Content-Type': 'application/x-www-form-urlencoded',
+         'Content-Length': Buffer.byteLength(postData)
+    }
+};
+
 client.post(requestOptions, postData, 200)
 	.then(function(res) {
 		// process here the response
 	}).catch(json => {
 		// error handling here
 	});
-
 ```
 
 See [test cases](https://github.com/codedearta/http-ok/tree/master/test) for more examples.
