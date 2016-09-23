@@ -68,14 +68,16 @@ const client = new HttpOk();
 
 client.get('https://github.com/')
 	.then(res => res.text())
-	.then(text => console.log(body));
+	.then(text => console.log(body))
+	.catch(err => console.log(err));
 ```
 
 #### json response
 ```javascript
 client.get('https://api.github.com/users/github')
 	.then(res => res.json())
-	.then(json => console.log(json));
+	.then(json => console.log(json))
+	.catch(err => console.log(err));
 ```
 
 #### post with form data and custom headers
