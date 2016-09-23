@@ -38,7 +38,9 @@ fetch('www.google.com')
         // error handling here
       }
     }
-  );
+  ).catch(err => {
+  	// error handling here
+  });
 
 ```
 
