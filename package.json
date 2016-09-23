@@ -1,6 +1,6 @@
 {
   "name": "http-ok",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple promise based http client which rejects the promise when the status ode is not 200 - OK",
   "main": "dist/http_ok.js",
   "scripts": {
