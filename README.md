@@ -70,14 +70,16 @@ client.get('https://github.com/')
 	.then(res => res.text())
 	.then(text => console.log(body));
 ```
+
+#### json response
 ```javascript
-// json
 client.get('https://api.github.com/users/github')
 	.then(res => res.json())
 	.then(json => console.log(json));
 ```
+
+#### post with form data and custom headers
 ```javascript
-// post with form data and custom headers
 const querystring = require('querystring');
 const formData = { 
     name: 'Bob Mc Bobson', 
@@ -100,8 +102,9 @@ client.post(requestOptions, postData, 200)
 		// error handling here
 	});
 ```
+
+#### specific success case eg. 302
 ```javascript
-// specific success case eg. 302
 client.get('http://redirected.com', 302)
      .then(response => {
          // process here the response
