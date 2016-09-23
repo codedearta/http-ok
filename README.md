@@ -68,7 +68,7 @@ const client = new HttpOk();
 
 client.get('https://github.com/')
 	.then(res => res.text())
-	.then(text => console.log(body))
+	.then(bodyText => console.log(bodyText))
 	.catch(err => console.log(err));
 ```
 
